@@ -40,6 +40,20 @@ class AppThemeCustom {
           bodyText1: base.textTheme.bodyText1?.copyWith(color: TextColor),
           bodyText2: base.textTheme.bodyText2?.copyWith(color: TextColor)
       ),
+
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          onPrimary: SecondaryColor,
+          primary: PrimaryColor
+        )
+      ),
+
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          primary: PrimaryColor
+        )
+      )
+
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:can_you_guess_it/screens/blank_display.dart';
+import 'package:can_you_guess_it/screens/login.dart';
 import 'package:flutter/material.dart';
 
 import 'navigationroutes.dart';
@@ -9,7 +10,7 @@ class AppRoutes{
     switch(settings.name){
       case NavigationRoutes.home:
         return MaterialPageRoute(builder: (context){
-          return BlankDisplay();
+          return Login();
         });
       default:
         return MaterialPageRoute(builder: (context){
