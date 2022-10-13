@@ -44,15 +44,55 @@ class AppThemeCustom {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           onPrimary: SecondaryColor,
-          primary: PrimaryColor
+          primary: PrimaryColor,
+          textStyle: TextStyle(
+            color: SecondaryColor,
+          fontSize: 18)
         )
       ),
 
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
-          primary: PrimaryColor
+          primary: PrimaryColor,
+
+
         )
-      )
+      ),
+
+        appBarTheme: AppBarTheme(
+          color: PrimaryColor,
+          titleTextStyle: TextStyle(color: PrimaryColorLight, fontSize: 18, fontWeight: FontWeight.bold),
+          toolbarTextStyle: TextStyle(color: PrimaryColorLight),
+          iconTheme: IconThemeData(
+            color: SecondaryColor
+          )
+
+        ),
+
+        inputDecorationTheme: InputDecorationTheme(
+          labelStyle: TextStyle(color: PrimaryColorLight),
+            hintStyle: TextStyle(color: PrimaryColorLight),
+            filled: true,
+            fillColor: AppThemeCustom.PrimaryColorLight.withOpacity(0.2),
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(
+              width: 2,
+              style: BorderStyle.solid,
+              color: PrimaryColorLight
+            )
+          ),
+            contentPadding: EdgeInsets.only(left: 10),
+            errorStyle: TextStyle(fontSize: 10,height: 0.3),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(
+            color: AppThemeCustom.PrimaryColorDark,
+            width: 2,
+          ),
+        ),
+
+    )
 
     );
   }

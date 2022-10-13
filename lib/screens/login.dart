@@ -1,3 +1,4 @@
+import 'package:can_you_guess_it/helpers/navigationroutes.dart';
 import 'package:can_you_guess_it/helpers/validators.dart';
 import 'package:flutter/material.dart';
 
@@ -96,13 +97,8 @@ class _LoginState extends State<Login> {
                       child: TextFormField(
 
                         controller: _passController,
-                        validator: (String? value) {Validators.passValidator(value!, "Contraseña");},
-                        decoration:
-                            InputDecoration(
-                              contentPadding: EdgeInsets.only(left: 10),
-                                errorStyle: TextStyle(fontSize: 10,height: 0.3),
-                                border: OutlineInputBorder()),
-                      )),
+                        validator: (value) {Validators.passValidator(value!, "Contraseña");},
+                      ))
                 ],
               ),
             ),
@@ -128,7 +124,7 @@ class _LoginState extends State<Login> {
         width: MediaQuery.of(context).size.width,
         alignment: Alignment.center,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {Navigator.pushNamed(context, NavigationRoutes.register);},
           child: Text("No tienes usuario? Regístrate aquí"),
         ),
       ),
