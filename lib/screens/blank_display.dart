@@ -5,6 +5,14 @@ class BlankDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: _appBar(),
+    );
+  }
+
+  AppBar _appBar(){
+    return AppBar(
+      title: Text("Ooops"),
+    );
   }
 }

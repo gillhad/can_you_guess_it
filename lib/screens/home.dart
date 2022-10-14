@@ -1,4 +1,5 @@
 import 'package:can_you_guess_it/helpers/app_theme.dart';
+import 'package:can_you_guess_it/helpers/arguments/arguments.dart';
 import 'package:can_you_guess_it/helpers/models/enums.dart';
 import 'package:can_you_guess_it/helpers/navigation_router.dart';
 import 'package:can_you_guess_it/helpers/navigationroutes.dart';
@@ -97,7 +98,9 @@ class _HomeState extends State<Home> {
       child: Container(
         width: _buttonWidth,
         child: ElevatedButton(
-          onPressed: (){},
+          onPressed: (){
+            _startNavigation();
+          },
           child: Text("START"),
         ),
       ),
@@ -200,7 +203,7 @@ class _HomeState extends State<Home> {
 
   ///Navigation
   _startNavigation(){
-    Navigator.pushNamed(context, NavigationRoutes.game);
+    Navigator.pushNamed(context, NavigationRoutes.game, arguments: GameArguments(gamemode: _gameMode));
   }
   _optionsNavigation(){
     Navigator.pushNamed(context, NavigationRoutes.game);

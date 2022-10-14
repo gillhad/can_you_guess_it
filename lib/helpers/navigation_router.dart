@@ -1,4 +1,6 @@
+import 'package:can_you_guess_it/helpers/arguments/arguments.dart';
 import 'package:can_you_guess_it/screens/blank_display.dart';
+import 'package:can_you_guess_it/screens/game_screen.dart';
 import 'package:can_you_guess_it/screens/home.dart';
 import 'package:can_you_guess_it/screens/login.dart';
 import 'package:can_you_guess_it/screens/register.dart';
@@ -21,6 +23,13 @@ class AppRoutes{
         case NavigationRoutes.home:
         return MaterialPageRoute(builder: (context){
           return Home();
+        });
+        case NavigationRoutes.game:
+        return MaterialPageRoute(builder: (context){
+          final arguments = settings.arguments as GameArguments;
+          return GameScreen(
+            gameMode: arguments.gamemode,
+          );
         });
       default:
         return MaterialPageRoute(builder: (context){
