@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 enum GameModes{
-  GLOBAL,
-  CONTINENT,
+  FLAGS,
   MAPS,
 }
 

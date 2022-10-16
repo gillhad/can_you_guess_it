@@ -1,9 +1,13 @@
 import 'package:can_you_guess_it/helpers/app_theme.dart';
 import 'package:can_you_guess_it/helpers/arguments/arguments.dart';
+import 'package:can_you_guess_it/helpers/data_mock.dart';
+import 'package:can_you_guess_it/helpers/models/User.dart';
 import 'package:can_you_guess_it/helpers/models/enums.dart';
 import 'package:can_you_guess_it/helpers/navigation_router.dart';
 import 'package:can_you_guess_it/helpers/navigationroutes.dart';
+import 'package:can_you_guess_it/helpers/user_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -17,14 +21,20 @@ class _HomeState extends State<Home> {
   late double _width;
   late double _heigth;
 
-  GameModes _gameMode = GameModes.GLOBAL;
-  List<GameModes> _gameModes = [GameModes.GLOBAL,GameModes.CONTINENT, GameModes.MAPS];
+  GameModes _gameMode = GameModes.FLAGS;
+  List<GameModes> _gameModes = [GameModes.FLAGS, GameModes.MAPS];
   List<Continents> _continents = [Continents.AFRICA, Continents.AMERICA, Continents.ASIA, Continents.EUROPE, Continents.OCEANIA];
   int _continentIndex = 0;
   Continents _currentContinent = Continents.AFRICA;
+  User _currentUser = MockData.testUser;
 
   @override
   Widget build(BuildContext context) {
+    print(Provider.of<UserHelper>(context).isLogged);
+    Provider.of<UserHelper>(context).isLogged = true;
+    Provider.of<UserHelper>(context).currentUser = _currentUser;
+    print(Provider.of<UserHelper>(context).isLogged);
+
      _buttonWidth = MediaQuery.of(context).size.width/2;
      _width = MediaQuery.of(context).size.width;
      _heigth = MediaQuery.of(context).size.height;
@@ -71,7 +81,7 @@ class _HomeState extends State<Home> {
       height: MediaQuery.of(context).size.height/3,
       child: Row(
         children: [
-          _gameMode != GameModes.GLOBAL
+          _gameMode != GameModes.FLAGS
               ?     _arrowNavigation(-1, setState)
             : Container(
             width: _width/5,
@@ -80,7 +90,7 @@ class _HomeState extends State<Home> {
             width: _width*3/5,
     child: Text(_currentContinent.name.toString(), style: TextStyle(color: AppThemeCustom.PrimaryColorDark),)
           ),
-          _gameMode != GameModes.GLOBAL
+          _gameMode != GameModes.FLAGS
               ? _arrowNavigation(1, setState)
           : Container(
             width: _width/5,
@@ -133,7 +143,7 @@ class _HomeState extends State<Home> {
         width: _buttonWidth,
         child: ElevatedButton(
           onPressed: (){
-
+_optionsNavigation();
           },
           child: Text("OPTIONS"),
         ),
@@ -206,10 +216,11 @@ class _HomeState extends State<Home> {
     Navigator.pushNamed(context, NavigationRoutes.game, arguments: GameArguments(gamemode: _gameMode));
   }
   _optionsNavigation(){
-    Navigator.pushNamed(context, NavigationRoutes.game);
+    Navigator.pushNamed(context, NavigationRoutes.options);
+
   }
   _profileNavigation(){
-    Navigator.pushNamed(context, NavigationRoutes.game);
+    Navigator.pushNamed(context, NavigationRoutes.profile);
   }
 
 }

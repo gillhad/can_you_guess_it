@@ -23,5 +23,14 @@ class Country{
 class Points{
   late String gameMode;
   late int points;
+  late String user;
+
+  Points({required this.gameMode, required this.points, required this.user});
 
 }
+
+class Ranking{
+  late List<Points> points;
+}
+
+
